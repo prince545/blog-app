@@ -1,4 +1,4 @@
-"use client";
+
 
 import React, { useState } from 'react';
 import Image from 'next/image';
@@ -50,6 +50,19 @@ const Header = () => {
             Subscribe
           </button>
         </form>
+        <nav className="mt-4">
+          <ul className="flex space-x-4 justify-center">
+            <li>
+              <a href="/" className="text-sm hover:underline">Home</a>
+            </li>
+            <li>
+              <a href="/about" className="text-sm hover:underline">About</a>
+            </li>
+            <li>
+              <a href="/contact" className="text-sm hover:underline">Contact</a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import googlePlusIcon from '../Assets/googleplus_icon.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-gray-300 py-8">
+    <footer className="bg-gray-800 text-gray-300 py-6 fixed bottom-0 w-full">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center gap-4">
           <Image src={logoLight} alt="Logo" width={50} height={50} />
@@ -16,13 +16,13 @@ const Footer = () => {
         <div className="mt-4 sm:mt-0 text-center sm:text-right">
           <p className="text-sm">&copy; {new Date().getFullYear()} My Blog. All rights reserved.</p>
           <div className="flex gap-4 mt-4 sm:mt-0">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75">
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-200">
               <Image src={facebookIcon} alt="Facebook" width={24} height={24} />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75">
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-200">
               <Image src={twitterIcon} alt="Twitter" width={24} height={24} />
             </a>
-            <a href="https://plus.google.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-75">
+            <a href="https://plus.google.com" target="_blank" rel="noopener noreferrer" className="hover:opacity-80 transition-opacity duration-200">
               <Image src={googlePlusIcon} alt="Google Plus" width={24} height={24} />
             </a>
           </div>

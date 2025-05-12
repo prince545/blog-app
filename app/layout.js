@@ -1,6 +1,7 @@
 import { Outfit } from 'next/font/google';
 import './globals.css';
-import Header from '../Components/Header.jsx';
+import Header from '@/Components/Header.jsx';
+import Footer from '@/Components/Footer.jsx';
 
 const outfit = Outfit({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 
@@ -15,8 +16,8 @@ export default function RootLayout({ children }) {
       <body className={outfit.className}>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );
 }
-
