@@ -1,6 +1,6 @@
 import { Outfit } from 'next/font/google';
 import './globals.css';
-import Header from '../Components/Header';
+import Header from '../Components/Header.jsx';
 
 const outfit = Outfit({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 

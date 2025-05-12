@@ -1,11 +1,11 @@
+'use client'
 
-
-import BlogItem from '../Components/BlogItem';
+import BlogList from '../Components/BlogList.jsx';
 
 export default function Home() {
   return (
    <>
-     <BlogItem />
+      <BlogList />
    </>
   );
 }
