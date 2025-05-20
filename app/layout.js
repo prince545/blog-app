@@ -1,6 +1,5 @@
 import { Outfit } from 'next/font/google';
 import './globals.css';
-import Header from '@/Components/Header.jsx';
 import Footer from '@/Components/Footer.jsx';
 
 const outfit = Outfit({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
@@ -13,9 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={outfit.className}>
-        <Header />
-        {children}
+      <body className={outfit.className + " min-h-screen flex flex-col"}>
+        <main className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
