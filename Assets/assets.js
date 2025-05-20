@@ -32,7 +32,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 2,
@@ -42,7 +42,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 3,
@@ -52,7 +52,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 4,
@@ -62,7 +62,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 5,
@@ -72,7 +72,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 6,
@@ -82,7 +82,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 7,
@@ -92,7 +92,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 8,
@@ -102,7 +102,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 9,
@@ -112,7 +112,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 10,
@@ -122,7 +122,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 11,
@@ -132,7 +132,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 12,
@@ -142,7 +142,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 13,
@@ -152,7 +152,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 14,
@@ -162,7 +162,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 15,
@@ -172,7 +172,7 @@ export const blog_data = [
         date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
     {
         id: 16,
@@ -182,6 +182,6 @@ export const blog_data = [
         date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
-        author_img: "/blog_images/profile_icon.png"
+        author_img: "/profile_icon.png"
     },
 ];

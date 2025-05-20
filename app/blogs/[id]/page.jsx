@@ -27,7 +27,15 @@ const Page = ({ params }) => {
         </button>
       </div>
       <div className="text-center my-24">
-        <h1>{data.title}</h1>
+        <h1 className='text-2xl sm:text-5xl font-semibold max-w-[700px] mx-auto'>{data.title}</h1>
+        <img 
+          className="mx-auto mt-6 rounded-full"
+          src={data.author_img}
+          width={80}
+          height={80}
+          alt={data.author}
+        />
+        <p className="mt-2 text-gray-600 font-medium">By {data.author}</p>
       </div>
     </div>
   ) : (
