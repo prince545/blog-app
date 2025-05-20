@@ -7,7 +7,7 @@ import googlePlusIcon from '../Assets/googleplus_icon.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-800 text-gray-300 py-6 fixed bottom-0 w-full">
+    <footer className="bg-gray-800 text-gray-300 py-6 w-full">
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
         <div className="flex items-center gap-4">
           <Image src={logoLight} alt="Logo" width={50} height={50} />
