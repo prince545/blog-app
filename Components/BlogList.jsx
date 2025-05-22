@@ -13,15 +13,21 @@ const BlogList = () => {
         <button onClick={() => setMenu('Lifestyle')} className={`text-sm px-6 py-2 border border-black border-solid shadow-[-7px_7px_0px] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 ${menu === 'Lifestyle' ? 'bg-black text-white py-1 px-4 rounded-sm' : ''}`}>Lifestyle</button>
       </div>
       <div className='flex flex-wrap justify-center gap-4 mt-10'>
-        {blog_data.filter((item) => menu === 'All' ? true : item.category === menu).map((item, index) => (
-          <BlogItem
-            key={index}
-            id={item.id}
-            image={item.image}
-            title={item.title}
-            description={item.description}
-            category={item.category}
-          />
+        {blog_data
+          .filter((item) => menu === 'All' ? true : item.category === menu)
+          .map((item, index) => (
+            <div
+              key={index}
+              className="bg-white rounded-xl shadow-md p-5 transition-transform duration-300 hover:scale-105 hover:[transform:perspective(400px)_rotateY(8deg)_rotateX(4deg)] hover:shadow-2xl"
+            >
+              <BlogItem
+                id={item.id}
+                image={item.image}
+                title={item.title}
+                description={item.description}
+                category={item.category}
+              />
+            </div>
         ))}
       </div>
     </div>

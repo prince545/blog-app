@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { blog_data, assets } from '@/Assets/assets';
+import Link from 'next/link';
 
 const Page = ({ params }) => {
     const unwrappedParams = React.use(params);
@@ -20,7 +21,9 @@ const Page = ({ params }) => {
         data ? (
             <div className="bg-gray-200 py-5 px-5 md:px-12 lg:px-28">
                 <div className="flex justify-between items-center">
-                    <img src="/logo.png" width={180} style={{ height: "auto" }} alt="" className="w-[130px] sm:w-auto" />
+                    <Link href="/">
+                        <img src="/logo.png" width={180} style={{ height: "auto" }} alt="" className="w-[130px] sm:w-auto" />
+                    </Link>
                     <button className="flex items-center gap-2 font-medium py-1 px-3 sm:py-3">
                         Get started <img src={assets.arrow} alt="" />
                     </button>

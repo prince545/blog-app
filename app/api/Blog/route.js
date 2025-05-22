@@ -1,0 +1,7 @@
+import { NextResponse } from "next/server";
+
+export async function GET(request) {
+  console.log("Blog GET Hit");
+  return NextResponse.json({ msg: "API Working" });
+}
+
