@@ -29,7 +29,7 @@ export const blog_data = [
         title: "A detailed step by step guide to manage your lifestyle",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_1.png",
-        date: "2024-06-01T12:00:00Z",
+        date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -39,7 +39,7 @@ export const blog_data = [
         title: "How to create an effective startup roadmap or ideas",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_2.png",
-        date: "2024-06-02T12:00:00Z",
+        date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -49,7 +49,7 @@ export const blog_data = [
         title: "Learning new technology to boost your career in software",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_3.png",
-        date: "2024-06-03T12:00:00Z",
+        date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -59,7 +59,7 @@ export const blog_data = [
         title: "Tips for getting the most out of apps and software",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_4.png",
-        date: "2024-06-04T12:00:00Z",
+        date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -69,7 +69,7 @@ export const blog_data = [
         title: "Enhancing your skills and capturing memorable moments",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_5.png",
-        date: "2024-06-05T12:00:00Z",
+        date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -79,7 +79,7 @@ export const blog_data = [
         title: "Maximizing returns by minimizing resources in your startup",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_6.png",
-        date: "2024-06-06T12:00:00Z",
+        date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -89,7 +89,7 @@ export const blog_data = [
         title: "Technology for Career advancement in development",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_7.png",
-        date: "2024-06-07T12:00:00Z",
+        date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -99,7 +99,7 @@ export const blog_data = [
         title: "A comprehensive roadmap for effective lifestyle management",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_8.png",
-        date: "2024-06-08T12:00:00Z",
+        date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -109,7 +109,7 @@ export const blog_data = [
         title: "Achieving maximum returns with minimal resources",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_9.png",
-        date: "2024-06-09T12:00:00Z",
+        date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -119,7 +119,7 @@ export const blog_data = [
         title: "Beyond the Ordinary: Crafting Your Exceptional Lifestyle",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_10.png",
-        date: "2024-06-10T12:00:00Z",
+        date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -129,7 +129,7 @@ export const blog_data = [
         title: "Unveiling the Secrets of Successful Startups in Technolgy",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_11.png",
-        date: "2024-06-11T12:00:00Z",
+        date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -139,7 +139,7 @@ export const blog_data = [
         title: "How to design an online Learning Platform today",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_12.png",
-        date: "2024-06-12T12:00:00Z",
+        date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -149,7 +149,7 @@ export const blog_data = [
         title: "Tomorrow's Algorithms: Shaping the Landscape of Future AI",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_13.png",
-        date: "2024-06-13T12:00:00Z",
+        date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -159,7 +159,7 @@ export const blog_data = [
         title: "Balance & Bliss: Navigating Life's Journey with Style",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_14.png",
-        date: "2024-06-14T12:00:00Z",
+        date: Date.now(),
         category: "Lifestyle",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -169,7 +169,7 @@ export const blog_data = [
         title: "Exploring the Evolution of social networking in the Future",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_15.png",
-        date: "2024-06-15T12:00:00Z",
+        date: Date.now(),
         category: "Technology",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
@@ -179,7 +179,7 @@ export const blog_data = [
         title: "Shaping the Future of statup ecosystem in the world",
         description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the..",
         image: "/blog_images/blog_pic_16.png",
-        date: "2024-06-16T12:00:00Z",
+        date: Date.now(),
         category: "Startup",
         author: "Alex Bennett",
         author_img: "/profile_icon.png"
