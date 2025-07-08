@@ -1,5 +1,5 @@
 import React from 'react'
-import BlogItem from './BlogItem'
+import BlogCart from './BlogCart'
 import { blog_data } from '../Assets/assets';
 
 const BlogList = () => {
@@ -16,18 +16,17 @@ const BlogList = () => {
         {blog_data
           .filter((item) => menu === 'All' ? true : item.category === menu)
           .map((item, index) => (
-            <div
+            <BlogCart
               key={index}
-              className="bg-white rounded-xl shadow-md p-5 transition-transform duration-300 hover:scale-105 hover:[transform:perspective(400px)_rotateY(8deg)_rotateX(4deg)] hover:shadow-2xl"
-            >
-              <BlogItem
-                id={item.id}
-                image={item.image}
-                title={item.title}
-                description={item.description}
-                category={item.category}
-              />
-            </div>
+              id={item.id}
+              image={item.image}
+              title={item.title}
+              description={item.description}
+              category={item.category}
+              author={item.author}
+              author_img={item.author_img}
+              date={item.date}
+            />
         ))}
       </div>
     </div>

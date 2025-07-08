@@ -4,10 +4,12 @@ import { writeFile } from "fs/promises";
 import { Buffer } from "buffer";
 import path from "path";
 import fs from "fs";
+import BlogModel from "../../lib/model/BlogModel"; // Fixed path
 
 export async function GET(request) {
   await Connectiondb();
-  return NextResponse.json({ msg: "API Working" });
+  const blogs = await BlogModel.find().sort({ createdAt: -1 });
+  return NextResponse.json({ blogs });
 }
 
 export async function POST(request) {
@@ -34,9 +36,20 @@ export async function POST(request) {
   await writeFile(filePath, buffer);
 
   const imgUrl = `/blog_images/${filename}`;
-  console.log(imgUrl);
 
-  return NextResponse.json({ msg: "Received", timestamp, image: imgUrl });
+  const blogData = {
+    title: formData.get('title'),
+    description: formData.get('description'),
+    category: formData.get('category'),
+    author: formData.get('author'),
+    image: imgUrl,
+    authorImg: formData.get('authorImg'),
+  };
+
+  // Save to MongoDB
+  await BlogModel.create(blogData);
+
+  return NextResponse.json({ imgUrl });
 }
 
 export async function PUT(request) {
@@ -47,6 +60,14 @@ export async function PUT(request) {
 
 export async function DELETE(request) {
   await Connectiondb();
-  console.log("Blog DELETE Hit");
-  return NextResponse.json({ msg: "DELETE method received" });
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get('id');
+  if (!id) {
+    return NextResponse.json({ error: 'No blog ID provided' }, { status: 400 });
+  }
+  const deleted = await BlogModel.findByIdAndDelete(id);
+  if (!deleted) {
+    return NextResponse.json({ error: 'Blog not found' }, { status: 404 });
+  }
+  return NextResponse.json({ message: 'Blog deleted' });
 }

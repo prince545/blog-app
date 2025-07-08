@@ -1,70 +1,48 @@
 "use client";
 
-import React, { useState } from 'react';
+import React from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 
 const Header = () => {
-  const [email, setEmail] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Add your form submission logic here, e.g., API call or alert
-    alert(`Subscribed with email: ${email}`);
-    setEmail('');
-  };
-
   return (
-    <div className='py-5 px-5 md:px-12 lg:px-28 border-b border-gray-200'>
-      <div className='flex justify-between items-center'>
-        <Image
-          src="/logo.png"
-          alt="logo"
-          width={240}
-          height={240}
-          className="w-28 h-28 object-contain"
-        />
-        <button className="text-sm px-6 py-2 border border-black border-solid shadow-[-7px_7px_0px] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150">
-          Get started
-        </button>
-      </div>
-      <div className="flex flex-col items-center">
-        <h1 className="text-3xl sm:text-5xl font-medium mt-4">
-          Latest Blogs
-        </h1>
-        <p className="mt-10 max-w-[740px] mx-auto text-xs sm:text-base">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-        </p>
-        <form onSubmit={handleSubmit} className="flex justify-between max-w-[500px] mx-auto mt-6">
-          <input
-            type="email"
-            placeholder="Enter your email"
-            className="pl-4 outline-none border border-black border-solid shadow-[-7px_7px_0px] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 rounded-l-md"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          <button
-            type="submit"
-            className="text-sm px-6 py-2 border border-black border-solid shadow-[-7px_7px_0px] hover:shadow-none hover:translate-x-1 hover:translate-y-1 transition-all duration-150 rounded-r-md"
-          >
-            Subscribe
-          </button>
-        </form>
-        <nav className="mt-4">
-          <ul className="flex space-x-4 justify-center">
-            <li>
-              <a href="/" className="text-sm hover:underline">Home</a>
-            </li>
-            <li>
-              <a href="/about" className="text-sm hover:underline">About</a>
-            </li>
-            <li>
-              <a href="/contact" className="text-sm hover:underline">Contact</a>
-            </li>
-          </ul>
+    <header className="bg-white border-b border-gray-200 py-3 px-5 md:px-12 lg:px-28 sticky top-0 z-30">
+      <div className="flex items-center justify-between gap-4">
+        {/* Logo Only */}
+        <Image src="/logo.png" alt="Logo" width={120} height={32} className="object-contain" />
+
+        {/* Navigation Links */}
+        <nav className="hidden md:flex gap-6 mx-auto">
+          <Link href="/" className="text-base font-medium text-gray-700 hover:text-blue-600 transition">Home</Link>
+          <Link href="/blogs" className="text-base font-medium text-gray-700 hover:text-blue-600 transition">Blogs</Link>
+          <Link href="/about" className="text-base font-medium text-gray-700 hover:text-blue-600 transition">About</Link>
+          <Link href="/contact" className="text-base font-medium text-gray-700 hover:text-blue-600 transition">Contact</Link>
         </nav>
+
+        {/* Right Side: Search, New Post, Avatar */}
+        <div className="flex items-center gap-4">
+          {/* Search Bar */}
+          <form className="hidden md:block">
+            <input
+              type="text"
+              placeholder="Search articles..."
+              className="px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-50 min-w-[200px]"
+            />
+          </form>
+          {/* New Post Button */}
+          <Link href="/blogs/new">
+            <button className="bg-blue-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-blue-700 transition flex items-center gap-2">
+              + New Post
+            </button>
+          </Link>
+          {/* User Avatar */}
+          <div className="flex items-center gap-2">
+            <img src="/profile_icon.png" alt="Alex Bennett" width={36} height={36} className="rounded-full border-2 border-blue-200" />
+            <span className="hidden md:inline text-base font-medium text-gray-800">Alex Bennett</span>
+          </div>
+        </div>
       </div>
-    </div>
+    </header>
   );
 };
 
