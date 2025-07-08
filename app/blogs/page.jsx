@@ -24,10 +24,10 @@ const BlogsPage = () => {
         if (res.ok && Array.isArray(data.blogs)) {
           setDbBlogs(data.blogs);
         } else {
-          setError('Failed to load blogs.');
+          setError('Failed to  blogs.');
         }
       } catch (err) {
-        setError('Failed to load blogs.');
+        setError('Failed to  blogs.');
       } finally {
         setLoading(false);
       }
