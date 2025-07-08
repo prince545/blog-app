@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from '../../Components/Header.jsx';
 import BlogCart from '../../Components/BlogCart.js';
 import { blog_data } from '../../Assets/assets';
@@ -8,52 +8,10 @@ import { blog_data } from '../../Assets/assets';
 const categories = ['All', 'Technology', 'Startup', 'Lifestyle'];
 
 const BlogsPage = () => {
-  const [dbBlogs, setDbBlogs] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchBlogs = async () => {
-      setLoading(true);
-      setError(null);
-      try {
-        const res = await fetch('/api/blog', { method: 'GET' });
-        const data = await res.json();
-        if (res.ok && Array.isArray(data.blogs)) {
-          setDbBlogs(data.blogs);
-        } else {
-          setError('Failed to  blogs.');
-        }
-      } catch (err) {
-        setError('Failed to  blogs.');
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchBlogs();
-  }, []);
-
-  // Merge static and db blogs
-  const allBlogs = [...dbBlogs, ...blog_data];
-
-  // Delete handler for DB blogs
-  const handleDelete = async (blogId) => {
-    if (!window.confirm('Are you sure you want to delete this blog?')) return;
-    try {
-      const res = await fetch(`/api/blog?id=${blogId}`, { method: 'DELETE' });
-      if (res.ok) {
-        setDbBlogs((prev) => prev.filter((b) => b._id !== blogId));
-      } else {
-        alert('Failed to delete blog.');
-      }
-    } catch {
-      alert('Failed to delete blog.');
-    }
-  };
-
-  const filteredBlogs = allBlogs.filter(blog => {
+  const filteredBlogs = blog_data.filter(blog => {
     const matchesCategory = selectedCategory === 'All' || blog.category === selectedCategory;
     const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
       blog.description.toLowerCase().includes(searchTerm.toLowerCase());
@@ -113,14 +71,10 @@ const BlogsPage = () => {
           ))}
         </div>
         {/* Blog Grid */}
-        {loading ? (
-          <div className="text-center py-12 text-gray-500">Loading blogs...</div>
-        ) : error ? (
-          <div className="text-center py-12 text-red-500">{error}</div>
-        ) : filteredBlogs.length > 0 ? (
+        {filteredBlogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredBlogs.map((blog) => (
-              <BlogCart key={blog._id || blog.id} {...blog} onDelete={blog._id ? handleDelete : undefined} />
+              <BlogCart key={blog._id || blog.id} {...blog} />
             ))}
           </div>
         ) : (
