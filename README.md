@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blog App
+
+A modern full-stack blog application built with **Next.js**, **Express**, and **MongoDB**. This project features a beautiful UI, user authentication, blog CRUD, image uploads, search, category filtering, and more.
+
+## Features
+- Responsive, modern UI with React and Tailwind CSS
+- User authentication (register, login, JWT)
+- Create, read, update, and delete (CRUD) blog posts
+- Image upload for blog posts
+- Search and filter blogs by category
+- Animated stats and dynamic content
+- Next.js API routes for frontend logic
+- Express backend (optional, for advanced API needs)
+- MongoDB Atlas integration
+
+## Tech Stack
+- [Next.js](https://nextjs.org/) (App Router)
+- [React](https://react.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [MongoDB Atlas](https://www.mongodb.com/atlas)
+- [Express.js](https://expressjs.com/) (backend)
+- [Mongoose](https://mongoosejs.com/)
 
 ## Getting Started
 
-First, run the development server:
-
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone <your-repo-url>
+cd blog-app
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+### 3. Set up environment variables
+Create a `.env` file in the `backend/` directory:
+```
+MONGO_URI=your_mongodb_atlas_uri
+JWT_SECRET=your_jwt_secret
+PORT=5000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### 4. Run the backend server
+```bash
+cd backend
+node index.js
+```
 
-## Learn More
+### 5. Run the frontend (Next.js) app
+```bash
+cd ..
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Visit [http://localhost:3000](http://localhost:3000) to view the app.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Screenshots
+_Add screenshots here if desired._
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+MIT
