@@ -7,6 +7,10 @@ const nextConfig = {
         protocol: 'http',
         hostname: 'localhost',
       },
+      {
+        protocol: 'https',
+        hostname: 'ui-avatars.com',
+      },
     ],
     unoptimized: true, // Allow local image imports without optimization issues
   },

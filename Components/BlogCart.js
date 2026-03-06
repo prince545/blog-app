@@ -21,34 +21,34 @@ const BlogCart = ({ title, description, category, image, id, _id, author, author
   };
 
   return (
-    <div className='max-w-[350px] bg-white border border-gray-200 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105'>
-      <Link href={`/blogs/${id || _id}`} className='block'>
+    <div className='max-w-[350px] group bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 overflow-hidden flex flex-col h-full'>
+      <Link href={`/blogs/${id || _id}`} className='flex flex-col flex-grow'>
         {image && (
-          <div className="relative mb-4">
+          <div className="relative h-56 w-full overflow-hidden">
             <Image
               src={image}
               alt={title || 'Blog Image'}
-              width={350}
-              height={200}
-              className='w-full h-48 object-cover rounded-lg'
+              fill
+              className='object-cover transition-transform duration-700 group-hover:scale-110'
             />
-            <div className="absolute top-2 left-2">
-              <span className={`px-3 py-1 rounded-full text-xs font-medium text-white ${categoryColors[category] || 'bg-gray-400'}`}>
+            <div className="absolute top-4 left-4 z-10">
+              <span className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-wider text-white shadow bg-opacity-90 backdrop-blur-sm ${categoryColors[category] || 'bg-gray-400'}`}>
                 {category || 'Uncategorized'}
               </span>
             </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-gray-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           </div>
         )}
-        
-        <div className="space-y-3">
+
+        <div className="p-6 flex flex-col flex-grow space-y-4">
           <h2 className='text-xl font-bold text-gray-800 line-clamp-2 hover:text-blue-600 transition-colors'>
             {title || 'Untitled'}
           </h2>
-          
+
           <p className='text-sm text-gray-600 line-clamp-3'>
             {description || 'No description available.'}
           </p>
-          
+
           <div className="flex items-center justify-between pt-3">
             <div className="flex items-center space-x-2">
               {author_img && (
@@ -65,7 +65,7 @@ const BlogCart = ({ title, description, category, image, id, _id, author, author
                 <p className="text-xs text-gray-500">{formatDate(date)}</p>
               </div>
             </div>
-            
+
             <div className="flex items-center text-blue-600 hover:text-blue-800 transition-colors">
               <span className='text-sm font-semibold mr-1'>Read more</span>
               <Image

@@ -36,7 +36,7 @@ const AboutPage = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      
+
       <div className="py-8 px-5 md:px-12 lg:px-28">
         {/* Hero Section */}
         <div className="text-center mb-16">
@@ -44,7 +44,7 @@ const AboutPage = () => {
             About Our Blog
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We're passionate about sharing insights on technology, startups, and lifestyle 
+            We're passionate about sharing insights on technology, startups, and lifestyle
             to help you stay informed and inspired in today's fast-paced world.
           </p>
         </div>
