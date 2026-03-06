@@ -11,7 +11,7 @@ const categoryColors = {
   Design: 'bg-pink-500',
 };
 
-const BlogCart = ({ title, description, category, image, id, _id, author, author_img, date, onDelete }) => {
+const BlogCart = ({ title, description, category, image, id, _id, author, author_img, authorImg, date, onDelete }) => {
   const formatDate = (timestamp) => {
     return new Date(timestamp).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -51,13 +51,13 @@ const BlogCart = ({ title, description, category, image, id, _id, author, author
 
           <div className="flex items-center justify-between pt-3">
             <div className="flex items-center space-x-2">
-              {author_img && (
+              {(authorImg || author_img) && (
                 <Image
-                  src={author_img}
+                  src={authorImg || author_img}
                   alt={author || 'Author'}
                   width={32}
                   height={32}
-                  className="rounded-full"
+                  className="rounded-full object-cover w-8 h-8"
                 />
               )}
               <div>
@@ -73,6 +73,7 @@ const BlogCart = ({ title, description, category, image, id, _id, author, author
                 alt='arrow'
                 width={16}
                 height={16}
+                style={{ height: 'auto' }}
                 className="transition-transform group-hover:translate-x-1"
               />
             </div>

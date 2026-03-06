@@ -8,7 +8,15 @@ import BlogModel from "../../lib/model/BlogModel"; // Fixed path
 
 export async function GET(request) {
   await Connectiondb();
-  const blogs = await BlogModel.find().sort({ createdAt: -1 });
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get('id');
+
+  if (id) {
+    const blog = await BlogModel.findById(id);
+    return NextResponse.json(blog);
+  }
+
+  const blogs = await BlogModel.find().sort({ date: -1 });
   return NextResponse.json({ blogs });
 }
 
@@ -18,38 +26,45 @@ export async function POST(request) {
   const formData = await request.formData();
   const image = formData.get('image');
 
-  if (!image || typeof image === "string") {
-    return NextResponse.json({ error: "No valid image uploaded" }, { status: 400 });
+  let imgUrl = "";
+
+  if (image && typeof image !== "string") {
+    const timestamp = Date.now();
+    const imageByteData = await image.arrayBuffer();
+    const buffer = Buffer.from(imageByteData);
+
+    const uploadDir = path.join(process.cwd(), "public", "blog_images");
+    if (!fs.existsSync(uploadDir)) {
+      fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    const filename = `${timestamp}_${image.name}`;
+    const filePath = path.join(uploadDir, filename);
+    await writeFile(filePath, buffer);
+
+    imgUrl = `/blog_images/${filename}`;
   }
-
-  const timestamp = Date.now();
-  const imageByteData = await image.arrayBuffer();
-  const buffer = Buffer.from(imageByteData);
-
-  const uploadDir = path.join(process.cwd(), "public", "blog_images");
-  if (!fs.existsSync(uploadDir)) {
-    fs.mkdirSync(uploadDir, { recursive: true });
-  }
-
-  const filename = `${timestamp}_${image.name}`;
-  const filePath = path.join(uploadDir, filename);
-  await writeFile(filePath, buffer);
-
-  const imgUrl = `/blog_images/${filename}`;
 
   const blogData = {
     title: formData.get('title'),
     description: formData.get('description'),
     category: formData.get('category'),
     author: formData.get('author'),
-    image: imgUrl,
     authorImg: formData.get('authorImg'),
   };
 
-  // Save to MongoDB
-  await BlogModel.create(blogData);
+  if (imgUrl) {
+    blogData.image = imgUrl;
+  }
 
-  return NextResponse.json({ imgUrl });
+  try {
+    // Save to MongoDB
+    await BlogModel.create(blogData);
+    return NextResponse.json({ success: true, imgUrl });
+  } catch (err) {
+    console.error("Error saving blog:", err);
+    return NextResponse.json({ error: "Failed to save blog to database" }, { status: 500 });
+  }
 }
 
 export async function PUT(request) {

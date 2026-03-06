@@ -1,20 +1,43 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../Components/Header.jsx';
 import BlogCart from '../../Components/BlogCart.js';
-import { blog_data } from '../../Assets/assets';
+import { blog_data as staticBlogs } from '../../Assets/assets';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const categories = ['All', 'Technology', 'Startup', 'Lifestyle'];
 
 const BlogsPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [blogs, setBlogs] = useState(staticBlogs);
+  const [loading, setLoading] = useState(true);
 
-  const filteredBlogs = blog_data.filter(blog => {
+  const fetchBlogs = async () => {
+    try {
+      const response = await axios.get('/api/blog');
+      const dbBlogs = response.data.blogs || [];
+      // Combine static blogs with DB blogs, avoiding duplicates by title/id if needed
+      // Here we just prepend DB blogs to the list
+      setBlogs([...dbBlogs, ...staticBlogs]);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+      toast.error("Failed to load newest blogs.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  const filteredBlogs = blogs.filter(blog => {
     const matchesCategory = selectedCategory === 'All' || blog.category === selectedCategory;
-    const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      blog.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesSearch = blog.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      blog.description?.toLowerCase().includes(searchTerm.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -37,6 +60,7 @@ const BlogsPage = () => {
               placeholder="Search blogs..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
+              suppressHydrationWarning
               className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
             <svg
@@ -60,18 +84,22 @@ const BlogsPage = () => {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full border-2 transition-all duration-200 font-medium text-base ${
-                selectedCategory === category
-                  ? 'bg-blue-600 text-white border-blue-600 shadow'
-                  : 'bg-white text-gray-700 border-gray-300 hover:border-blue-600 hover:text-blue-600'
-              }`}
+              suppressHydrationWarning
+              className={`px-6 py-2 rounded-full border-2 transition-all duration-200 font-medium text-base ${selectedCategory === category
+                ? 'bg-blue-600 text-white border-blue-600 shadow'
+                : 'bg-white text-gray-700 border-gray-300 hover:border-blue-600 hover:text-blue-600'
+                }`}
             >
               {category}
             </button>
           ))}
         </div>
         {/* Blog Grid */}
-        {filteredBlogs.length > 0 ? (
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+          </div>
+        ) : filteredBlogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredBlogs.map((blog) => (
               <BlogCart key={blog._id || blog.id} {...blog} />

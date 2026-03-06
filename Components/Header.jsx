@@ -13,7 +13,7 @@ const Header = () => {
       <div className="flex items-center justify-between gap-4">
         {/* Logo */}
         <Link href="/" className="group">
-          <Image src="/logo.png" alt="Logo" width={130} height={36} className="object-contain transition-transform group-hover:scale-105" />
+          <Image src="/logo.png" alt="Logo" width={130} height={36} style={{ height: 'auto' }} className="object-contain transition-transform group-hover:scale-105" />
         </Link>
 
         {/* Navigation Links */}
@@ -42,6 +42,7 @@ const Header = () => {
             <input
               type="text"
               placeholder="Search articles..."
+              suppressHydrationWarning
               className="pl-10 pr-4 py-2.5 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 bg-gray-50/50 min-w-[220px] text-sm transition-all"
             />
           </form>
@@ -59,7 +60,7 @@ const Header = () => {
               </Link>
               {/* User Avatar */}
               <div className="flex items-center gap-3 ml-2 pl-4 border-l border-gray-200">
-                <img src={user.profileImage || `https://ui-avatars.com/api/?name=${encodeURIComponent(user.name || 'User')}&background=random&color=fff&rounded=true`} alt={user.name} width={40} height={40} className="rounded-full border-2 border-white shadow-sm ring-2 ring-transparent hover:ring-blue-100 transition-all cursor-pointer" />
+                <img src={user.profileImage || "/profile_icon.png"} alt={user.name} width={40} height={40} className="rounded-full border-2 border-white shadow-sm ring-2 ring-transparent hover:ring-blue-100 transition-all cursor-pointer" />
                 <div className="hidden md:flex flex-col">
                   <span className="text-sm font-bold text-gray-900 leading-none">{user.name}</span>
                   <button

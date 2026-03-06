@@ -11,12 +11,28 @@ const Page = ({ params }) => {
     const [readingTime, setReadingTime] = useState(0);
 
     useEffect(() => {
-        for (let i = 0; i < blog_data.length; i++) {
-            if (Number(unwrappedParams.id) === blog_data[i].id) {
-                setData(blog_data[i]);
-                break;
+        const fetchBlogData = async () => {
+            // 1. Try finding in static data
+            const staticData = blog_data.find(blog => String(blog.id) === String(unwrappedParams.id));
+            if (staticData) {
+                setData(staticData);
+                return;
             }
-        }
+
+            // 2. Not static? Try fetching from API
+            try {
+                const response = await fetch(`/api/blog?id=${unwrappedParams.id}`);
+                const dbBlog = await response.json();
+
+                if (response.ok && dbBlog) {
+                    setData(dbBlog);
+                }
+            } catch (error) {
+                console.error("Error fetching blog:", error);
+            }
+        };
+
+        fetchBlogData();
     }, [unwrappedParams.id]);
 
     useEffect(() => {
@@ -180,11 +196,11 @@ const Page = ({ params }) => {
                         <div className="flex items-center space-x-4 mb-8 pb-8 border-b border-gray-200">
                             <div className="relative">
                                 <Image
-                                    src={data.author_img}
+                                    src={data.authorImg || data.author_img || "/profile_icon.png"}
                                     alt={data.author}
                                     width={60}
                                     height={60}
-                                    className="rounded-full"
+                                    className="rounded-full object-cover w-[60px] h-[60px]"
                                 />
                             </div>
                             <div>
@@ -221,7 +237,7 @@ const Page = ({ params }) => {
                             {/* Key Insights */}
                             <section className="mb-12">
                                 <h2 className="text-2xl font-bold text-gray-900 mb-8">Key Insights</h2>
-                                
+
                                 <div className="grid gap-8">
                                     {categoryContent.insights.map((insight, index) => (
                                         <div key={index} className={`bg-gradient-to-r from-${insight.color}-50 to-${insight.color}-100 p-8 rounded-xl border-l-4 border-${insight.color}-500`}>
@@ -288,7 +304,7 @@ const Page = ({ params }) => {
                                         {categoryContent.conclusion}
                                     </p>
                                     <p className="text-gray-700 leading-relaxed text-lg">
-                                        Remember, the journey is just as important as the destination. Stay committed to your goals, 
+                                        Remember, the journey is just as important as the destination. Stay committed to your goals,
                                         celebrate your progress, and don't hesitate to seek support when needed. Every expert was once a beginner.
                                     </p>
                                 </div>
